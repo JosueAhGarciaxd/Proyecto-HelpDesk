@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        //no logre validar el de inciar sesion :(
         val btnInicio: Button = findViewById(R.id.btnIniciar)
         btnInicio.setOnClickListener {
             val intent = Intent(this, activity_Inicio::class.java)
