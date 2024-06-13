@@ -35,7 +35,7 @@
             app:srcCompat="@drawable/baseline_edit_24" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imgBorrar"
             android:layout_width="wrap_content"
             android:layout_height="54dp"
             android:layout_weight="1"
