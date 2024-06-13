@@ -28,7 +28,7 @@
             android:textSize="34sp" />
 
         <ImageView
-            android:id="@+id/igmEditar"
+            android:id="@+id/imgEditar"
             android:layout_width="wrap_content"
             android:layout_height="44dp"
             android:layout_weight="8"
