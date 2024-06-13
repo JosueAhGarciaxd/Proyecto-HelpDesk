@@ -10,8 +10,6 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import josue.a.helpdeskjosue.R
 import josue.a.helpdeskjosue.activity_detalleTickect
 import kotlinx.coroutines.Dispatchers
@@ -69,7 +67,7 @@ class Adaptador(private var Datos: List<tickest>) : RecyclerView.Adapter<Adaptad
     }
 
     // Actualizar producto
-    fun actualizarProducto(numero: String, titulo: String, descripcion: String, autor: String, email: String, fechaCreacion: String, estado: String, fechaFinalizacion: String, uuid: String) {
+    fun actualizarProducto(numero: Number, titulo: String, descripcion: String, autor: String, email: String, fechaCreacion: String, estado: String, fechaFinalizacion: String, uuid: String) {
         GlobalScope.launch(Dispatchers.IO) {
             val objConexion = ClaseConexion().cadenaConexion()
             val updateProducto = objConexion?.prepareStatement("UPDATE tb_Tiket SET titulo = ?, descripcion = ?, autor = ?, email = ?, estado = ?, fechaFinalizacion = ? WHERE uuid = ?")!!
@@ -124,7 +122,7 @@ class Adaptador(private var Datos: List<tickest>) : RecyclerView.Adapter<Adaptad
             builder.setView(cuadritoNuevoTitulo)
             builder.setPositiveButton("Actualizar") { dialog, which ->
                 actualizarProducto(
-                    item.numero.toInt(), // Convierte `Number` a `Int`
+                    item.numero,
                     cuadritoNuevoTitulo.text.toString(),
                     item.descripcion,
                     item.autor,
