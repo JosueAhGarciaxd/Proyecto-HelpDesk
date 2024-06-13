@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+
+    app:cardElevation="5dp"
+    app:cardCornerRadius="20dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="15dp"
+
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    tools:context=".item_card">
+
+    <LinearLayout
+        android:layout_width="308dp"
+        android:layout_height="match_parent"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtProductoCard"
+            android:layout_width="188dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="34sp" />
+
+        <ImageView
+            android:id="@+id/igmEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_weight="8"
+            app:srcCompat="@drawable/baseline_edit_24" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/baseline_delete_24" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

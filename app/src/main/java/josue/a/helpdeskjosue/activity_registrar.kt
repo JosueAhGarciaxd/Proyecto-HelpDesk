@@ -9,6 +9,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.UUID
 
 class activity_registrar : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,21 +40,29 @@ class activity_registrar : AppCompatActivity() {
             val contrasena = txtContrasena.text.toString()
             val nombre = txtNombreR.text.toString()
 
-            if (correo.isEmpty() || nombre.isEmpty() || contrasena.isEmpty()) {
-                Toast.makeText(this, "Campos vacíos", Toast.LENGTH_LONG).show()
-            } else {
-                // Validar Correo Electrónico
-                if (!correo.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+".toRegex())) {
-                    Toast.makeText(this, "Ingrese correo válido", Toast.LENGTH_LONG).show()
-                } else if (contrasena.length < 6 || contrasena.matches("[0-9]+".toRegex())) {
-                    Toast.makeText(this, "La clave debe contener más de 6 dígitos y no solo números", Toast.LENGTH_LONG).show()
+
+
+            btnRegistrar.setOnClickListener {
+                val correo = txtCorreoR.text.toString()
+                val contrasena = txtContrasena.text.toString()
+                val nombre = txtNombreR.text.toString()
+
+                if (correo.isEmpty() || nombre.isEmpty() || contrasena.isEmpty()) {
+                    Toast.makeText(this, "Campos vacíos", Toast.LENGTH_LONG).show()
                 } else {
-                    // Todos los campos son válidos, registra al usuario y redirige
-                    val intent = Intent(this, activity_Inicio::class.java)
-                    startActivity(intent)
+                        // Validar Correo Electrónico
+                    if (!correo.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+".toRegex())) {
+                        Toast.makeText(this, "Ingrese correo válido", Toast.LENGTH_LONG).show()
+                    } else if (contrasena.length < 6 || contrasena.matches("[0-9]+".toRegex())) {
+                        Toast.makeText(this, "La clave debe contener más de 6 dígitos y no solo números", Toast.LENGTH_LONG).show()
+                    } else {
+                        // Todos los campos son válidos, registra al usuario y redirige
+                        val intent = Intent(this, activity_Inicio::class.java)
+                        startActivity(intent)
+                    }
                 }
+
             }
         }
-
     }
 }
